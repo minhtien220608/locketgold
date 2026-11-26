@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LOCKET GOLD · Bảng Giá</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 14px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0d0a1a;
+      color: #f5f3ff;
+    }
+    body.light {
+      background: #f5f4fb;
+      color: #18142b;
+    }
+    .wrap {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .top {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+    }
+    .theme-btn {
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(128, 128, 128, 0.3);
+      background: #1a1530;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    body.light .theme-btn {
+      background: #fff;
+      color: #18142b;
+    }
+    .tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 6px;
+      border-radius: 16px;
+      background: #17132b;
+      margin-bottom: 14px;
+      -webkit-overflow-scrolling: touch;
+    }
+    body.light .tabs {
+      background: #e9e6f5;
+    }
+    .tab-btn {
+      flex: 0 0 auto;
+      padding: 9px 14px;
+      border: none;
+      border-radius: 12px;
+      background: transparent;
+      color: #a69ec7;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    body.light .tab-btn {
+      color: #5b547a;
+    }
+    .tab-btn.active {
+      background: #7c5cff;
+      color: #fff;
+    }
+    .card {
+      background: #17132b;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 22px;
+      padding: 18px 14px;
+    }
+    body.light .card {
+      background: #fff;
+      border-color: rgba(0, 0, 0, 0.08);
+    }
+    .eyebrow {
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      color: #c4b5fd;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    body.light .eyebrow {
+      color: #6d4aff;
+    }
+    h1 {
+      text-align: center;
+      font-size: 22px;
+      margin: 0 0 8px;
+    }
+    .sub {
+      text-align: center;
+      font-size: 13px;
+      color: #a69ec7;
+      margin: 0 0 16px;
+      line-height: 1.45;
+    }
+    body.light .sub {
+      color: #625b82;
+    }
+    .stats {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .stat {
+      flex: 1;
+      background: #221c3d;
+      border-radius: 14px;
+      padding: 14px 8px;
+      text-align: center;
+    }
+    body.light .stat {
+      background: #f2effc;
+    }
+    .stat-num {
+      font-size: 20px;
+      font-weight: 800;
+      color: #f5b82e;
+      margin: 4px 0;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: #a69ec7;
+    }
+    body.light .stat-label {
+      color: #625b82;
+    }
+    .sync {
+      text-align: center;
+      font-size: 11px;
+      color: #a69ec7;
+      margin-bottom: 16px;
+    }
+    .prices {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .price-box {
+      position: relative;
+      flex: 1;
+      background: #221c3d;
+      border: 1.5px solid rgba(124, 92, 255, 0.35);
+      border-radius: 16px;
+      padding: 14px 10px;
+      text-align: center;
+    }
+    body.light .price-box {
+      background: #f2effc;
+    }
+    .price-box.hot {
+      border-color: #f5b82e;
+    }
+    .tag {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #e11d48;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .plan {
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 6px;
+    }
+    .money {
+      font-size: 24px;
+      font-weight: 900;
+      color: #f5b82e;
+      margin: 8px 0 6px;
+    }
+    .desc {
+      font-size: 11px;
+      color: #a69ec7;
+      margin-bottom: 12px;
+    }
+    body.light .desc {
+      color: #625b82;
+    }
+    .buy {
+      width: 100%;
+      padding: 9px 6px;
+      border: none;
+      border-radius: 999px;
+      background: #f5b82e;
+      color: #1b1303;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .box {
+      background: #221c3d;
+      border-radius: 16px;
+      padding: 14px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    body.light .box {
+      background: #f2effc;
+    }
+    .box h3 {
+      margin: 0 0 8px;
+      font-size: 14px;
+    }
+    .box ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #c4bce2;
+    }
+    body.light .box ul {
+      color: #484263;
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      border-radius: 12px;
+      background: #17132b;
+      text-decoration: none;
+      color: inherit;
+    }
+    body.light .row {
+      background: #fff;
+    }
+    .row strong {
+      color: #f5b82e;
+    }
+    .panel {
+      display: none;
+    }
+    .panel.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <button class="theme-btn" id="btnTheme" type="button">☀️ Chế độ sáng</button>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" type="button" onclick="showTab('shop', this)">🛍️ Mua bán</button>
+      <button class="tab-btn" type="button" onclick="showTab('orders', this)">🧾 Đơn hàng</button>
+      <button class="tab-btn" type="button" onclick="showTab('reviews', this)">⭐ Đánh giá</button>
+      <button class="tab-btn" type="button" onclick="showTab('profile', this)">👤 Profile</button>
+    </div>
+
+    <div class="card">
+      <div class="panel active" id="panel-shop">
+        <div class="eyebrow">LOCKET GOLD · BẢNG GIÁ THAM KHẢO</div>
+        <h1>Chọn gói phù hợp với bạn ✨</h1>
+        <p class="sub">Giá tham khảo theo bảng giá hiện tại. Nhấn Zalo để hỏi tình trạng và được tư vấn trước khi mua.</p>
+
+        <div class="stats">
+          <div class="stat">
+            <div>👀</div>
+            <div class="stat-num">1.404</div>
+            <div class="stat-label">Lượt truy cập</div>
+          </div>
+          <div class="stat">
+            <div>🛍️</div>
+            <div class="stat-num">125</div>
+            <div class="stat-label">Đơn hàng hoàn tất</div>
+          </div>
+        </div>
+        <div class="sync">Đã đồng bộ trực tuyến từ Supabase · Tự động cập nhật mỗi 20 giây.</div>
+
+        <div class="prices">
+          <div class="price-box hot">
+            <div class="tag">Tiết kiệm</div>
+            <div class="plan">👑 1 Năm</div>
+            <div class="money">59K</div>
+            <div class="desc">Theo gói 1 năm</div>
+            <a class="buy" style="display:block;text-decoration:none;" href="https://zalo.me/0393180660" target="_blank">Mua gói này</a>
+          </div>
+
+          <div class="price-box">
+            <div class="plan">👑 Vĩnh Viễn</div>
+            <div class="money">79K</div>
+            <div class="desc">Gói vĩnh viễn</div>
+            <a class="buy" style="display:block;text-decoration:none;" href="https://zalo.me/0393180660" target="_blank">Mua gói này</a>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3>💜 LOCKET GOLD – PHIÊN BẢN MỚI CỰC HOT! 🔥</h3>
+          <ul>
+            <li>✨ Quay video tối đa 60 giây, có âm thanh.</li>
+            <li>🎨 Mở khóa nhiều khung & hiệu ứng nổi bật.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel" id="panel-orders">
+        <h1>Đơn hàng</h1>
+        <p class="sub">Danh sách đơn hàng gần đây.</p>
+        <div class="box">
+          <div class="row"><span>#LK125 · Gói 1 Năm</span><strong>Hoàn tất</strong></div>
+          <div class="row"><span>#LK124 · Gói Vĩnh Viễn</span><strong>Hoàn tất</strong></div>
+        </div>
+      </div>
+
+      <div class="panel" id="panel-reviews">
+        <h1>Đánh giá</h1>
+        <p class="sub">Phản hồi từ khách hàng.</p>
+        <div class="box">
+          <div class="row"><span>⭐⭐⭐⭐⭐ Hỗ trợ nhanh</span><strong>5.0</strong></div>
+          <div class="row"><span>⭐⭐⭐⭐⭐ Giá tốt, dùng ổn định</span><strong>5.0</strong></div>
+        </div>
+      </div>
+
+      <div class="panel" id="panel-profile">
+        <h1>Profile</h1>
+        <p class="sub">Thông tin liên hệ chính thức.</p>
+        <div class="box">
+          <a class="row" href="https://zalo.me/0393180660" target="_blank">
+            <span>💬 Zalo</span>
+            <strong>0393180660</strong>
+          </a>
+          <div class="row">
+            <span>🎵 TikTok</span>
+            <strong>Tín Lóc Két Gôn</strong>
+          </div>
+          <div class="row">
+            <span>📘 Facebook</span>
+            <strong>Nguyễn Minh Tiến</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showTab(name, btn) {
+      var panels = document.querySelectorAll
